@@ -1,0 +1,16 @@
+Delivery=read.table(file="D:\\datalabsvideos\\Module-2\\MLR-Delivery Time.csv",header=T,sep=",")
+names(Delivery)
+attach(Delivery)
+#Create the design matrix
+X =model.matrix(~Delivery$Cases+Delivery$Distance)
+Y = matrix(Delivery$DeliveryTime,ncol = 1)
+Y
+X
+#Xtranspose X inverse
+I = solve(crossprod(X))
+I
+#Xtranspose Y
+J = crossprod(X,Y)
+J
+B=I%*%J
+B
